@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Decimal to Hex in Censys
 // @namespace    https://digicert.com/
-// @version      0.2
+// @version      0.3
 // @description  Converts serial numbers in Censys from decimal to hexadecimal.
 // @author       Michael Lettona
 // @match        https://censys.io/certificates/*
@@ -19,7 +19,7 @@
 
     var outputElem = document.getElementsByClassName("dl-horizontal dl")[0];
     var snlink = outputElem.cloneNode(true);
-    snlink.innerHTML = '<dt>Serial (hex) </dt><dd>'+hex_value+' [<a href="https://admin.digicert.com/adminarea/support-tools/view-by-serial-number.php?serial_number='+hex_value+'" target="_blank">AdminArea</a>] [<a href="https://crt.sh/?serial='+hex_value+'" target="_blank">Crt.sh</a>]</dd>';
+    snlink.innerHTML = '<dt>Serial (hex) </dt><dd>'+hex_value+' [<a href="https://admin.digicert.com/adminarea/support-tools/view-by-serial-number.php?serial_number='+hex_value+'" target="_blank">AdminArea</a>] [<a href="https://crt.sh/?serial='+hex_value+'" target="_blank">crt.sh</a>]</dd>';
     outputElem.appendChild(snlink);
 
 //###############################################################################################################################################################################################
