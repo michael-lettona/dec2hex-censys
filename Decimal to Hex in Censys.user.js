@@ -19,7 +19,7 @@
 
     var outputElem = document.getElementsByClassName("dl-horizontal dl")[0];
     var snlink = outputElem.cloneNode(true);
-    snlink.innerHTML = '<dt>Serial (hex) </dt><dd>'+hex_value+' [<a href="https://admin.digicert.com/adminarea/support-tools/view-by-serial-number.php?serial_number='+hex_value+'" target="_blank">AdminArea</a>]</dd>';
+    snlink.innerHTML = '<dt>Serial (hex) </dt><dd>'+hex_value+' [<a href="https://admin.digicert.com/adminarea/support-tools/view-by-serial-number.php?serial_number='+hex_value+'" target="_blank">AdminArea</a>] [<a href="https://crt.sh/?serial='+hex_value+'" target="_blank">Crt.sh</a>]</dd>';
     outputElem.appendChild(snlink);
 
 //###############################################################################################################################################################################################
