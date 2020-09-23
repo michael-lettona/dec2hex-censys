@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Decimal to Hex in Censys
 // @namespace    https://digicert.com/
-// @version      0.3
+// @version      0.5
 // @description  Converts serial numbers in Censys from decimal to hexadecimal.
 // @author       Michael Lettona
 // @match        https://censys.io/certificates/*
@@ -12,15 +12,18 @@
     'use strict';
 
 
-    var num = document.getElementsByTagName("dd")[2].textContent;
-    var hex_value = 0+dec2Hex(num).toUpperCase();;
+    //var num = document.getElementsByTagName("dd")[2].textContent;
+    var num = document.getElementsByTagName("dd")[2].textContent.replace(/[A-Za-z: ]*/,'').split(/[Hex]+/)[0];
+    var hash = document.getElementsByTagName("dd")[5].textContent.toUpperCase();
+    var hex_value = dec2Hex(num).toUpperCase();
     //alert(hex_value);
     //console.log(hex_value);
 
     var outputElem = document.getElementsByClassName("dl-horizontal dl")[0];
     var snlink = outputElem.cloneNode(true);
-    snlink.innerHTML = '<dt>Serial (hex) </dt><dd>'+hex_value+' [<a href="https://admin.digicert.com/adminarea/support-tools/view-by-serial-number.php?serial_number='+hex_value+'" target="_blank">AdminArea</a>] [<a href="https://crt.sh/?serial='+hex_value+'" target="_blank">crt.sh</a>]</dd>';
+    snlink.innerHTML = '<dt>Serial (hex) </dt><dd>'+hex_value+'<br>[<a href="https://admin.digicert.com/adminarea/support-tools/view-by-serial-number.php?serial_number='+0+hex_value+'" target="_blank">AdminArea</a>]<span class="medspace"></span>[<a href="https://crt.sh/?serial='+hex_value+'" target="_blank">crt.sh Serial</a>]<span class="medspace"></span>[<a href="https://crt.sh/?sha256='+hash+'" target="_blank">crt.sh Hash]</dd></dd>';
     outputElem.appendChild(snlink);
+
 
 //###############################################################################################################################################################################################
 //Decimal to Hexadecimal conversion starts here
